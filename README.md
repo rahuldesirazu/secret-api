@@ -1,3 +1,5 @@
+NOTE: This service is built on top of python 3.
+
 /secret/api/account/create: URI to create a new account. Use a POST request with format {"username":username, "password":password} to create a new account. Upon successful creation, the server returns a json with the username, password, and created uri for the user
 
 /secret/api/string:username: URI to access the stored secrets. To access the secrets, the username and password used to make the URI must be used in the request. GET request to get the secrets, secrets returned in json {"secrets":[list of secrets]}. PUT request to add new secrets, update with json {"secrets":[list of secrets]} to add to the current list. DELETE request to delete secrets, update with json {"secrets":[list of secrets]}.
