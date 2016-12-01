@@ -10,9 +10,9 @@ auth = HTTPBasicAuth()
 app = Flask(__name__)
 
 """ The persistent database mapping usernames to passwords. """
-accounts = shelve.open("data/accounts-shelf", "c") 
+accounts = shelve.open("accounts-shelf", "c") 
 """ The persistent database mapping usernames to a list of that users secrets. """
-data = shelve.open("data/data-shelf", "c")
+data = shelve.open("data-shelf", "c")
 """ The r/w lock for the account info. """
 accountLock = lock.ReadWriteLock()
 """ The r/w lock for the secret info. """

@@ -5,7 +5,6 @@ import os
 
 def test_create_account(username, password):
 	r = requests.post("http://localhost:5000/secret/api/account/create", json={"username":username, "password":password})
-	print(r.status_code)
 	if r.status_code == 201:
 		print('passed test_create_account')
 		return True
@@ -33,7 +32,6 @@ def test_get_secrets(username, password, expected):
 
 def test_get_secrets_bad_uri(username, password):
 	r = requests.get("http://localhost:5000/secret/api/random/", auth=(username, password))
-	print(r.status_code)
 	if r.status_code == 404:
 		print('passed test_get_secrets_bad_uri')
 		return True
@@ -64,10 +62,7 @@ def add_secrets(username, password, secrets):
 
 def delete_secrets(username, password, secrets):	
 	r = requests.delete("http://localhost:5000/secret/api/" + username, auth=(username, password), json={"secrets":secrets})
-	print(r.json())
 	
-shutil.rmtree('./data')
-os.mkdir('./data')
 test_create_account('rahul', 'foo')
 test_create_account_with_same_username('rahul')
 test_get_secrets('rahul', 'foo', [])
